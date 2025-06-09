@@ -7,10 +7,12 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sk.eadmin.biz.dto.AddCustomerProblemRegistInputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistInputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistOutputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistResDTO;
@@ -24,6 +26,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Tag(name = "customer-problem", description = "고객문의")
 @RestController
@@ -104,4 +107,23 @@ public class CustomProblemController {
     }
     return new ResponseEntity<List<CustomerProblemRegistResDTO>>(rets, HttpStatus.OK);
   }
+
+
+
+
+
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Post */
+@PostMapping("/customer-problem")
+@Operation(summary = "고객 문의 등록", description = "고객의 문의를 등록한다.")
+public ResponseEntity<Void>  addCustomerProblemRegist( @Valid @RequestBody AddCustomerProblemRegistInputDTO inputDTO  ) {
+
+  System.out.println("Controller : addCustomerProblemRegist");
+  System.out.println(inputDTO.getCustomerName());
+  customerProblemService.addCustomerProblemRegist(inputDTO);
+  return ResponseEntity.noContent().build();
+
+  }
 }
+

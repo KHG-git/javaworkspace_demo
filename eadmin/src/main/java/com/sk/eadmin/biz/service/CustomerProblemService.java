@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CustomerProblemService {
     public List<CustomerProblemRegistOutputDTO> getCustomerProblemRegistList(CustomerProblemRegistInputDTO param);
+
+    public void addCustomerProblemRegist(AddCustomerProblemRegistInputDTO param);
 }

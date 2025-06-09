@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.sk.eadmin.biz.dto.AddCustomerProblemRegistInputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistInputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistMapperInputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistMapperOutputDTO;
@@ -51,4 +52,19 @@ public class CustomerProblemServiceImpl implements CustomerProblemService {
     log.debug("    return - [{}]", retList);
     return retList;
   }
+
+
+  @Override
+   public void addCustomerProblemRegist(@NonNull AddCustomerProblemRegistInputDTO input) {
+
+	log.debug(">>>>> {}.addCustomerProblemRegist Start <<<<<", this.getClass().getName());
+	log.debug("    Parameter 1 - input[{}]", input);
+
+	customerProblemMapper.addCustomerProblemRegist(input);
+
+	log.debug(">>>>> {}.addCustomerProblemRegist Finish <<<<<", this.getClass().getName());
+
+   }
+
+
 }
