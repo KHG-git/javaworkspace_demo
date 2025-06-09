@@ -11,6 +11,7 @@ import com.sk.eadmin.biz.dto.CustomerProblemRegistInputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistMapperInputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistMapperOutputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistOutputDTO;
+import com.sk.eadmin.biz.dto.ModifyCustomerProblemRegistInputDTO;
 import com.sk.eadmin.biz.mapper.CustomerProblemMapper;
 
 import lombok.NonNull;
@@ -63,6 +64,40 @@ public class CustomerProblemServiceImpl implements CustomerProblemService {
 	customerProblemMapper.addCustomerProblemRegist(input);
 
 	log.debug(">>>>> {}.addCustomerProblemRegist Finish <<<<<", this.getClass().getName());
+
+   }
+
+   @Override
+   public void modifyCustomerProblemRegist(@NonNull Integer registID, @NonNull ModifyCustomerProblemRegistInputDTO inputDTO) {
+
+	log.debug(">>>>> {}.modifyCustomerProblemRegist Start <<<<<", this.getClass().getName());
+	log.debug("    Parameter 1 - input[{}]", inputDTO);
+
+	System.out.println("customerProblemMapper.modifyCustomerProblemRegist(registID, inputDTO)");
+	System.out.println(inputDTO);
+
+	customerProblemMapper.modifyCustomerProblemRegist(registID, inputDTO);
+
+	log.debug(">>>>> {}.modifyCustomerProblemRegist Finish <<<<<", this.getClass().getName());
+
+   }
+
+   @Override
+   public boolean deleteCustomerProblemRegist(Integer registID) {
+	log.debug(">>>>> {}.deleteCustomerProblemRegist Start <<<<<", this.getClass().getName());
+	log.debug("    Parameter 1 - regId[{}]", registID);
+
+	customerProblemMapper.deleteCustomerProblemRegist(registID);
+
+	log.debug(">>>>> {}.deleteCustomerProblemRegist Finish <<<<<", this.getClass().getName());
+
+	return true;
+   }
+
+   @Override
+   public CustomerProblemRegistMapperOutputDTO getCustomerProblemRegistDetail(Integer registID) {
+
+	return customerProblemMapper.getCustomerProblemRegistDetail(registID);
 
    }
 

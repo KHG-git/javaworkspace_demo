@@ -3,9 +3,11 @@ package com.sk.eadmin.biz.dto;
 import java.util.Date;
 
 import lombok.Data;
+import lombok.ToString;
 
 
 @Data
+@ToString
 public class CustomerProblemRegistMapperOutputDTO {
 
     private String 	regId;

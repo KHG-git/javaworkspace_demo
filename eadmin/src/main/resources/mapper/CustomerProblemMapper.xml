@@ -32,7 +32,9 @@
 				AND A.req_desc LIKE CONCAT('%', #{requestDesc}, '%')
 			</if>
 		</where>
-		GROUP BY A.reg_id;
+		GROUP BY A.reg_id
+		ORDER BY A.reg_id desc
+		;
 	</select>
 	<select id="getCustomerProblemRegistDetail" parameterType="int" resultType="CustomerProblemRegistMapperOutputDTO">
 		SELECT /* CustomerProblemMapper.getCustomerProblemRegistDetail */
@@ -45,6 +47,8 @@
 			, A.prbm_cd
 			, D2.cd_val as cust_prbm
 			, A.prbm_dgr 
+		    , A.reg_id
+			
 		FROM reg_cust_prbm A
 		LEFT OUTER JOIN cmn_cd_dtl D1 on D1.ctg_cd = 'sts-cd' AND A.prgs_sts = D1.cmn_cd
 		LEFT OUTER JOIN cmn_cd_dtl D2 on D2.ctg_cd = 'prbm-cd' AND A.prbm_cd = D2.cmn_cd
@@ -83,15 +87,15 @@
 			);
 	</insert>
 	
-	<update id="modifyCustomerProblemRegist" parameterType="ModifyCustomerProblemRegistInputDTO">
+	<update id="modifyCustomerProblemRegist">
 		UPDATE reg_cust_prbm
 		<set>
-			<if test="customerName != null">	, cust_nm	=	#{customerName}</if>
-			<if test="customerMobile != null">	, cust_mbl	=	#{customerMobile}</if>
-			<if test="requestDesc != null">		, req_desc	=	#{requestDesc}</if>
-			<if test="problemCode != null">		, prbm_cd	=	#{problemCode}</if>
-			<if test="problemDegree != null">	, prbm_dgr	=	#{problemDegree}</if>
-			<if test="reqestID != null">		, updt_id	=	#{reqestID}</if>
+			<if test="inputDTO.customerName != null">	, cust_nm	=	#{inputDTO.customerName}</if>
+			<if test="inputDTO.customerMobile != null">	, cust_mbl	=	#{inputDTO.customerMobile}</if>
+			<if test="inputDTO.requestDesc != null">	, req_desc	=	#{inputDTO.requestDesc}</if>
+			<if test="inputDTO.problemCode != null">	, prbm_cd	=	#{inputDTO.problemCode}</if>
+			<if test="inputDTO.problemDegree != null">	, prbm_dgr	=	#{inputDTO.problemDegree}</if>
+			<if test="inputDTO.reqestID != null">		, updt_id	=	#{inputDTO.reqestID}</if>
 			, updt_dttm	=	CURRENT_TIMESTAMP
 		</set>
 		WHERE 
