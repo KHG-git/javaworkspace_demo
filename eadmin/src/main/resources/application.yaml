@@ -1,0 +1,15 @@
+spring:
+    application:
+        name: admin-eam-back
+    datasource:
+        url: jdbc:h2:c:\javaworkspace_demo\h2\db
+        username: sa
+        password: test
+    h2:
+        console:
+            enabled: true
+mybatis:
+    type-aliases-package: com.sk.eadmin.biz.dto
+    mapper-locations: classpath:mapper/**/*.xml
+    configuration:
+        map-underscore-to-camel-case: true
