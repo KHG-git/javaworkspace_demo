@@ -2502,3 +2502,9 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/javaworkspace
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 70 more
+2025-06-10 18:01:27.014764+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]REG_CUST_PRBM"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REFRESH"; SQL statement:
+REG_CUST_PRBM [42001-232]
+2025-06-10 18:01:34.959572+09:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]BATCH_JOB_EXECUTION"; expected "BACKUP, BEGIN"; SQL statement:
+BATCH_JOB_EXECUTION [42001-232]
