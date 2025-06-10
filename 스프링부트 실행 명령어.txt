@@ -1,0 +1,1 @@
+gradlew clean bootRun --args="--job.name=JOB_0001 fileName=E:\javaworkspace_demo\files\sample2.csv timestamp=20250610100000"

@@ -2,7 +2,7 @@ spring:
     application:
         name: admin-eam-back
     datasource:
-        url: jdbc:h2:c:\javaworkspace_demo\h2\db
+        url: jdbc:h2:e:\javaworkspace_demo\h2\db
         username: sa
         password: test
     h2:
