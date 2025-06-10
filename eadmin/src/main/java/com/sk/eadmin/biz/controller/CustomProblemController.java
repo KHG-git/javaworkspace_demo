@@ -151,7 +151,7 @@ public ResponseEntity<Void>  modifyCustomerProblemRegist( @Valid @PathVariable I
 
     /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Delete */
 @DeleteMapping("/customer-problem/{registID}")
-@Operation(summary = "고객 문의 수정", description = "고객의 문의를 수정 한다.")
+@Operation(summary = "고객접수문의삭제", description = "고객의 문의를 삭제 한다.")
 public ResponseEntity<Void>  deleteCustomerProblemRegist( @Valid @PathVariable Integer registID  ) {
 
   System.out.println("Controller : deleteCustomerProblemRegist");
@@ -162,6 +162,7 @@ public ResponseEntity<Void>  deleteCustomerProblemRegist( @Valid @PathVariable I
   }
 
 @GetMapping("/customer-problem/{registID}")
+@Operation(summary = "고객접수문의 상세조회", description = "고객의 문의를 상세 조회 한다.")
 public ResponseEntity<CustomerProblemRegistResDTO> getCustomerProblemRegistDetail(@Valid @PathVariable Integer registID) {
 
   System.out.println("Controller : getCustomerProblemRegistDetail");
