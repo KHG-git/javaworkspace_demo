@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.sk.eadmin.admin_eadmin_batch.jobs.job0001.mapper.Job0001">
+    <insert id="insertPrbmCustAgnt" parameterType="com.sk.eadmin.admin_eadmin_batch.jobs.job0001.dto.PrbmCustAgntDTO">
+      INSERT INTO /* com.sk.eadmin_batch.jobs.job0001.mapper.Job0001.insertPrbmCustAgnt */
+        prbm_cust_agnt (
+          agnt_id,
+          agnt_nm,
+          agnt_regn_cd,
+          agnt_icn, crte_id,
+          crte_dttm,
+          updt_id,
+          updt_dttm
+      ) VALUES (
+        #{agntId},
+        #{agntNm},
+        #{agntRegnCd},
+        #{agntIcn},
+        #{crteId},
+        #{crteDttm},
+        #{updtId},
+        #{updtDttm}
+      )
+    </insert>
+</mapper>

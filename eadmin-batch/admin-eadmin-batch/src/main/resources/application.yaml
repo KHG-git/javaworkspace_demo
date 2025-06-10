@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: admin-eam-batch
+  datasource:
+    url: jdbc:h2:c:\javaworkspace_demo\h2\db
+    username: sa
+    password: test
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      name: ${job.name:NONE}
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
