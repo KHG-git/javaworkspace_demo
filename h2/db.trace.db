@@ -95,3 +95,15 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "자주 �
 자주 사용하는 앱에서 바로 AI를 사용해 보세요 … Gemini를 사용하여 초안을 생성하고 콘텐츠를 다듬고, 1개월 동안 ₩29,000 ₩0에 Google의 차세대 AI가 지원되는 Gemini Pro를 이용하세요.
 INSERT INTO "REG_CUST_PRBM" ("REG_ID", "CUST_NM", "CUST_MBL", "REQ_DESC", "PRBM_CD", "PRBM_DGR", "PRGS_STS", "CRTE_ID", "CRTE_DTTM", "UPDT_ID", "UPDT_DTTM")
 VALUES (1, '홍길동', '01098765432', '요청상세 샘플입니다.', '0001', 5, 'sts-cd', 'SAMPLE', NOW(), 'SAMPLE', NOW()) [42000-232]
+2025-06-10 15:32:14.141834+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "CUST_NM CHARACTER VARYING(10)": "U&'\\c774\\cca0 \\d5e4\\c5b4 \\ceac\\ceac\\ceac\\ceac\\cec4' (11)"; SQL statement:
+UPDATE reg_cust_prbm
+		 SET  cust_nm	=	?
+				, cust_mbl	=	?
+				, req_desc	=	?
+				, prbm_cd	=	?
+				, prbm_dgr	=	?
+					, updt_id	=	?
+			, updt_dttm	=	CURRENT_TIMESTAMP 
+		WHERE 
+			reg_id = ? [22001-232]

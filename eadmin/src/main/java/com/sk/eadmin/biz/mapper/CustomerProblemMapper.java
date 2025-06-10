@@ -1,6 +1,7 @@
 package com.sk.eadmin.biz.mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -17,6 +18,6 @@ public interface CustomerProblemMapper {
     void addCustomerProblemRegist(AddCustomerProblemRegistInputDTO param);
     void modifyCustomerProblemRegist(@Param("registID") Integer registID, @Param("inputDTO") ModifyCustomerProblemRegistInputDTO param);
     boolean deleteCustomerProblemRegist(Integer registID);
-    CustomerProblemRegistMapperOutputDTO getCustomerProblemRegistDetail(Integer registID);
+    Optional<CustomerProblemRegistMapperOutputDTO> getCustomerProblemRegistDetail(Integer registID);
 
 }

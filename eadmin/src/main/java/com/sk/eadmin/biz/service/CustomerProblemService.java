@@ -9,5 +9,5 @@ public interface CustomerProblemService {
     public void addCustomerProblemRegist(AddCustomerProblemRegistInputDTO param);
     public void modifyCustomerProblemRegist(Integer registID, ModifyCustomerProblemRegistInputDTO param);
     public boolean deleteCustomerProblemRegist(Integer registID);
-    public CustomerProblemRegistMapperOutputDTO getCustomerProblemRegistDetail(Integer registID);
+    public CustomerProblemRegistDetailInfoOutputDTO getCustomerProblemRegistDetail(Integer registID);
 }

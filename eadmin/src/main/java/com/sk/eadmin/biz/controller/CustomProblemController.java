@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sk.eadmin.biz.dto.AddCustomerProblemRegistInputDTO;
+import com.sk.eadmin.biz.dto.CustomerProblemRegistDetailInfoOutputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistInputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistMapperOutputDTO;
 import com.sk.eadmin.biz.dto.CustomerProblemRegistOutputDTO;
@@ -89,6 +90,8 @@ public class CustomProblemController {
     @RequestParam(name = "requestFilter", required = false)
     String requestFilter
   ) {
+
+    /*
     final List<CustomerProblemRegistOutputDTO> serviceResults = customerProblemService.getCustomerProblemRegistList(
          CustomerProblemRegistInputDTO.builder()
             .problemCode(problemCode)
@@ -112,6 +115,35 @@ public class CustomProblemController {
       rets.add(retObject);
     }
     return new ResponseEntity<List<CustomerProblemRegistResDTO>>(rets, HttpStatus.OK);
+
+    */
+
+    return new ResponseEntity<List<CustomerProblemRegistResDTO>>(
+      customerProblemService.getCustomerProblemRegistList(
+        CustomerProblemRegistInputDTO.builder()
+        .problemCode(problemCode)
+        .agentRegionCode(agentRegionCode)
+        .progressStatusCode(progressStatusCode)
+        .requestDesc(requestFilter)
+        .build()
+      )
+      .stream()
+      .map((CustomerProblemRegistOutputDTO serviceResult) -> CustomerProblemRegistResDTO.builder()
+        .regId(serviceResult.getRegId())
+        .custNm(serviceResult.getCustNm())
+        .custMbl(serviceResult.getCustMbl())
+        .reqDesc(serviceResult.getReqDesc())
+        .prbmCd(serviceResult.getPrbmCd())
+        .prbmDgr(serviceResult.getPrbmDgr())
+        .prgsSts(serviceResult.getPrgsSts())
+        .prgsStsVal(serviceResult.getPrgsStsVal())
+        .crteDttm(serviceResult.getCrteDttm())
+        .agntIcn(serviceResult.getAgntIcn())
+        .build()
+      )
+      .toList(), 
+      HttpStatus.OK
+    );
   }
 
 
@@ -168,7 +200,7 @@ public ResponseEntity<CustomerProblemRegistResDTO> getCustomerProblemRegistDetai
   System.out.println("Controller : getCustomerProblemRegistDetail");
   System.out.println("registID : " + registID);
 
-  CustomerProblemRegistMapperOutputDTO fromDB = customerProblemService.getCustomerProblemRegistDetail(registID);
+  CustomerProblemRegistDetailInfoOutputDTO fromDB = customerProblemService.getCustomerProblemRegistDetail(registID);
 
   System.out.println(fromDB);
   System.out.println();
@@ -183,7 +215,7 @@ public ResponseEntity<CustomerProblemRegistResDTO> getCustomerProblemRegistDetai
         .prgsSts(fromDB.getPrgsSts())
         .prgsStsVal(fromDB.getPrgsStsVal())
         .prbmDgr(fromDB.getPrbmDgr())
-        .regId(fromDB.getRegId())
+        //.regId(fromDB.getRegId())
         .build();
 
         System.out.println(res);
